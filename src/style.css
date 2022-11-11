@@ -1,0 +1,57 @@
+/**
+*   Changing defalut styles of the browser
+**/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: sans-serif;
+}
+
+a {
+    text-decoration: none;
+    color: yellow;
+}
+
+i {
+    cursor: pointer;
+}
+
+/**
+*   Navbar styles
+**/
+
+.navbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #212529;
+    color: yellow;
+    padding: 25px 60px;
+}
+
+.cart {
+    position: relative;
+    background-color: yellow;
+    color: #212529;
+    font-size: 30px;
+    padding: 7px;
+    border-radius: 5px;
+}
+
+.cartAmount {
+    position: absolute;
+    top: -16px;
+    right: -10px;
+    background-color: red;
+    color: white;
+    font-weight: bold;
+    font-size: 15px;
+    padding: 5px;
+    border-radius: 20%;
+}
