@@ -10,15 +10,21 @@
 
 body {
     font-family: sans-serif;
+    background-color: #212529;
 }
 
 a {
-    text-decoration: none;
-    color: yellow;
+    text-decoration: none;  
 }
 
 i {
     cursor: pointer;
+
+}
+
+img {
+    width: 218px;
+    border-radius: 5px 5px 0 0;
 }
 
 /**
@@ -31,8 +37,13 @@ i {
     justify-content: space-between;
     align-items: center;
     background-color: #212529;
-    color: yellow;
     padding: 25px 60px;
+    border-bottom: 3px solid white;
+}
+
+/* style for brand title */
+.navbar .brand {
+    color: yellow;
 }
 
 .cart {
@@ -54,4 +65,80 @@ i {
     font-size: 15px;
     padding: 5px;
     border-radius: 20%;
+}
+
+/**
+*   styles for grid and item cards
+**/
+.shop {
+    display: grid;
+    grid-template-columns: repeat(4, 220px);
+    gap: 30px;
+    justify-content: center;
+    padding: 40px;
+}
+
+@media screen and (max-width: 1000px) {
+    .shop {
+        grid-template-columns: repeat(2, 220px);
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .shop {
+        grid-template-columns: repeat(1, 220px);
+    }
+}
+
+.item {
+    border: 1px solid skyblue;
+    border-radius: 5px;
+    background-color: green;
+    box-shadow: 0 0 10px skyblue;
+}
+
+.details {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+}
+
+.price-quantity {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    font-size: 18px;
+}
+
+.quantity {
+    font-weight: bolder;
+    font-size: 25px;
+}
+
+.bi-dash-lg {
+    font-weight: bolder;
+    color: white;
+    padding: 0 2px;
+    background-color: rgb(235, 8, 8, 0.6);
+    border: 1px solid skyblue;
+    border-radius: 100%;
+}
+
+.bi-plus-lg {
+    font-weight: bolder;
+    color: white;
+    padding: 0 2px;
+    background-color: rgba(64, 234, 12, 0.6);
+    border: 1px solid skyblue;
+    border-radius: 100%;
 }
