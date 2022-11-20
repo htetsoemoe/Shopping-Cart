@@ -1,4 +1,4 @@
-/**
+ /**
 *   Changing defalut styles of the browser
 **/
 
@@ -57,6 +57,7 @@ img {
 
 .cartAmount {
     position: absolute;
+    border-radius: 50%;
     top: -16px;
     right: -10px;
     background-color: red;
