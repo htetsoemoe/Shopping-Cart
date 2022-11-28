@@ -51,9 +51,9 @@ let generateCartItems = () => {
     } else {
         shoppingCart.innerHTML = "";
         label.innerHTML = `
-            <h2>Cart is Empty!</h2>
+            <h2 class="cart-empty-text">Sorry! Your cart is Empty.</h2>
             <a href="index.html">
-                <button class="home-btn">Back to Home</button>
+                <button class="btn">Back to Home</button>
             </a>
         `;
     }
@@ -61,7 +61,69 @@ let generateCartItems = () => {
 
 generateCartItems();
 
+// increment function
+let increment = id => {
+    let selectedItem = id;
+    let searchedItem = basket.find(item => item.id === selectedItem.id);
 
+    if (searchedItem === undefined) {
+        basket.push({
+            id: selectedItem.id,
+            item: 1,
+        });
+    } else {
+        searchedItem.item += 1;
+    }
+
+    generateCartItems();
+    update(selectedItem.id);
+    localStorage.setItem("data", JSON.stringify(basket));
+};
+
+// decrement function
+let decrement = id => {
+    let selectedItem = id;
+    let searchedItem = basket.find(item => item.id === selectedItem.id);
+
+    if (searchedItem === undefined || searchedItem.item === 0) {
+        return;
+    } else {
+        searchedItem.item -= 1;
+    }
+
+    update(selectedItem.id);
+
+    // remove item from basket with number of item is zero 
+    basket = basket.filter(item => item.item !== 0);
+
+    generateCartItems();
+
+    // reset basket to localStorage
+    localStorage.setItem("data", JSON.stringify(basket));
+};
+
+// update function
+let update = id => {
+    let searchedItem = basket.find(item => item.id === id);
+    document.getElementById(id).innerHTML = searchedItem.item;
+    calculation();
+    totalAmount();
+}
+
+// remove item from your shopping cart
+let removeItem = id => {
+    let selectedItem = id;
+
+    // item in shopping card id not equal in basket item's id
+    // if item id is equal with basket item's id, remove from basket
+    basket = basket.filter(item => item.id !== selectedItem.id);
+
+    calculation();
+    generateCartItems();
+    totalAmount();
+
+    localStorage.setItem("data", JSON.stringify(basket));
+}
 
 /**
  * ! Used to calculate total amount of the selected Products
@@ -90,3 +152,10 @@ generateCartItems();
   };
   
   totalAmount();
+
+  let clearCart = () => {
+    basket = [];
+    generateCartItems();
+    calculation();
+    localStorage.setItem("data", JSON.stringify(basket));
+  }
